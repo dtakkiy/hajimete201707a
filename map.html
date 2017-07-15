@@ -36,16 +36,25 @@
         <div class="title">おすすめ一覧</div>
         <div class="suggest-item"></div>
     </div>
+    <div class="target-distance">
+        <div class="title">ターゲット距離</div>
+        <div class="target-distance-item"></div>
+    </div>
+    <div class="distance">
+        <div class="title">総距離</div>
+        <div class="distance-item"></div>
+    </div>
     <div class="text-center">
-        <button id="ok" class="btn-btn-success">OK</button>
+        <button id="back" class="btn btn-default">戻る</button>
+        <button id="ok" class="btn btn-success">OK</button>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVomUHx-4RYwVCfJThKokKAdU18DnmIO8&libraries=places&callback=initMap" async defer></script>
 <script>
-    var start = { place: '横浜駅', lat: 35.464562, lng: 139.623000 };
-    var goal = { place: '金沢八景駅', lat: 35.33333, lng: 139.6186755 };
+//    var start = { place: '横浜駅', lat: 35.464562, lng: 139.623000 };
+//    var goal = { place: '金沢八景駅', lat: 35.33333, lng: 139.6186755 };
 
     var pointList = [
         { id: '1', place: 'パシフィコ', lat: 35.458316, lng: 139.635411 },
@@ -56,11 +65,14 @@
         { id: '6', place: '八景島', lat: 35.342388, lng: 139.636093 },
     ];
 
+    var $distanceItem = $('.distance-item');
+    var storageDistance = parseFloat(localStorage.getItem('distance'));
+
     $(function() {
         var selectedPointIdList = [];
 
-        $('#start-place').val(start.place);
-        $('#goal-place').val(goal.place);
+        $('#start-place').val(localStorage.getItem('start'));
+        $('#goal-place').val(localStorage.getItem('goal'));
 
         var $suggests = $('.suggests');
         $suggests.append(
@@ -114,14 +126,38 @@
                 waypoints: waypoints,
                 travelMode: 'WALKING'
             };
+            if (directionsDisplay != null) {
+                directionsDisplay.setMap(null);
+                directionsDisplay = null;
+            }
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            directionsDisplay.setMap(map);
             directionsService.route(request, function(result, status) {
                 if (status == 'OK') {
-                    directionsDisplay.setDirections(result);
+                    var distance = 0;
+
+                    var route = result.routes[0];
+                    for (var i = 0; i < route.legs.length; i++) {
+                        distance += parseInt(route.legs[i].distance.text.replace('km', '').trim(), 10);
+                    }
+
+                    $distanceItem.html(distance + ' km');
+
+                    if (storageDistance + 5 < distance) {
+                        alert('距離がおかしいよ！再設定してください');
+                    } else {
+                        directionsDisplay.setDirections(result);
+                    }
                 }
             });
         });
 
+        $('#back').click(function() {
+            location.href = "input.html";
+        });
+
     });
+
 
     var directionsDisplay;
     var directionsService;
@@ -136,8 +172,6 @@
         stepDisplay = new google.maps.InfoWindow();
 
         map = new google.maps.Map(document.getElementById('map'), {
-//            center: { lat: 35.4657901, lng: 139.6201245 },
-            zoom: 18,
             mapTypeControl: false,
         });
         directionsDisplay.setMap(map);
@@ -161,11 +195,27 @@
             travelMode: 'WALKING'
         };
         directionsService.route(request, function(result, status) {
+            console.log(result);
             if (status == 'OK') {
                 directionsDisplay.setDirections(result);
+
+                var distance = 0.0;
+
+                var route = result.routes[0];
+                for (var i = 0; i < route.legs.length; i++) {
+                    distance += parseFloat(route.legs[i].distance.text.replace('km', '').trim())
+                }
+
+                $distanceItem.html(distance + ' km');
+
+                if (storageDistance + 5 < distance) {
+                    alert('距離がおかしいよ！');
+                    location.href = 'input.html';
+                }
             }
         });
 
+        $('.target-distance-item').html(storageDistance + ' km');
         startPlace = new google.maps.places.Autocomplete(document.getElementById('start-place'), {});
         goalPlace = new google.maps.places.Autocomplete(document.getElementById('goal-place'), {});
     }

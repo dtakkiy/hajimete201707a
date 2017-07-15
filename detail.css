@@ -12,12 +12,16 @@
 
 .detail .start,
 .detail .goal,
-.detail .suggests {
+.detail .suggests,
+.detail .distance,
+.detail .target-distance {
   margin-bottom: 20px;
 }
 
 .detail .start .title,
 .detail .goal .title,
-.detail .suggests .title {
+.detail .suggests .title,
+.detail .distance .title,
+.detail .target-distance .title {
   font-weight: bold;
 }
