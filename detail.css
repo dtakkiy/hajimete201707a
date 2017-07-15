@@ -1,0 +1,23 @@
+.detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 80%;
+  width: 270px;
+  height: 100vh;
+  z-index: 10;
+  background-color: white;
+  padding: 10px;
+}
+
+.detail .start,
+.detail .goal,
+.detail .suggests {
+  margin-bottom: 20px;
+}
+
+.detail .start .title,
+.detail .goal .title,
+.detail .suggests .title {
+  font-weight: bold;
+}
