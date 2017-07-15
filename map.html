@@ -42,7 +42,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=*********************&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVomUHx-4RYwVCfJThKokKAdU18DnmIO8&libraries=places&callback=initMap" async defer></script>
 <script>
     var start = { place: '横浜駅', lat: 35.464562, lng: 139.623000 };
     var goal = { place: '金沢八景駅', lat: 35.33333, lng: 139.6186755 };
@@ -86,17 +86,13 @@
             var sp = startPlace.getPlace();
             var start = localStorage.getItem('start');
             if (sp) {
-                console.log(sp);
-                console.log(sp.geometry);
-                console.log(sp.geometry.localtion);
-
-                start = new google.maps.LatLng(sp.geometry.localtion.lat(), sp.geometry.localtion.lng());
+                start = new google.maps.LatLng(sp.geometry.location.lat(), sp.geometry.location.lng());
             }
 
             var gp = goalPlace.getPlace();
             var goal = localStorage.getItem('goal');
             if (gp) {
-                goal = new google.maps.LatLng(gp.geometry.localtion.lat(), gp.geometry.localtion.lng());
+                goal = new google.maps.LatLng(gp.geometry.location.lat(), gp.geometry.location.lng());
             }
 
             var waypoints = selectedPointIdList.map(function(pId) {
