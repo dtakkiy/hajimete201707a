@@ -1,7 +1,1 @@
-<?php
-
-
-echo "test";
-
-
-
+<?php echo file_get_contents('input.html'); ?>
