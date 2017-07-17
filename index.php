@@ -1,1 +1,1 @@
-<?php echo file_get_contents('input.html'); ?>
+<?php echo "input";
