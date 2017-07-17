@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Map</title>
+    <title>俺のミチ</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -19,7 +19,7 @@
         }
     </style>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet"/>
     <link href="detail.css" rel="stylesheet">
 </head>
 <body>
@@ -54,9 +54,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVomUHx-4RYwVCfJThKokKAdU18DnmIO8&libraries=places&callback=initMap" async defer></script>
 <script>
-//    var start = { place: '横浜駅', lat: 35.464562, lng: 139.623000 };
-//    var goal = { place: '金沢八景駅', lat: 35.33333, lng: 139.6186755 };
-
     var pointList = [
         { id: '1', place: 'パシフィコ', lat: 35.458316, lng: 139.635411 },
         { id: '2', place: '横浜スタジアム', lat: 35.443122, lng: 139.638545 },
@@ -159,7 +156,6 @@
 
     });
 
-
     var directionsDisplay;
     var directionsService;
     var stepDisplay;
@@ -189,8 +185,6 @@
         var goal = localStorage.getItem('goal');
 
         var request = {
-//            origin: new google.maps.LatLng(start.lat, start.lng),
-//            destination: new google.maps.LatLng(goal.lat, goal.lng),
             origin: start,
             destination: goal,
             travelMode: 'WALKING'
