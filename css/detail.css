@@ -1,3 +1,17 @@
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* detail */
 .detail {
   position: absolute;
   top: 0;
@@ -42,6 +56,7 @@
   border-radius: 3px;
   font-size: 14px;
 }
+
 .btn-btn-success:active {
   -ms-transform: translateY(4px);
   -webkit-transform: translateY(4px);
@@ -49,3 +64,26 @@
   border-bottom: none;
 }
 
+.start-place {
+  height: 30px;
+  width: 200px;
+  
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left;
+}
+
+.goal-place {
+  height: 30px;
+  width: 200px;
+
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left;
+}

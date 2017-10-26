@@ -1,93 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <title>俺のミチ</title>
 </head>
 <body>
-<div class="content">
-    <div class="title">
-        <h3 class="white">ルート検索</h3>
+    <div class="content">
+        <div class="title">
+            <h3 class="white">ルート検索</h3>
+        </div>
+        <div class="form">
+            <div class="px20">
+                <div class="form-group">
+                    <label for="distance" class="white">距離</label>
+                    <div class="px30">
+                        <select id="distance" class="distance">
+                            <option value="" selected>-- 選択して下さい --</option>
+                            <option value="5">5km</option>
+                            <option value="10">10km</option>
+                            <option value="20">20km</option>
+                            <option value="30">30km</option>
+                            <option value="40">40km</option>
+                            <option value="50">50km</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="type" class="white">場所</label>
+                    <div class="px30">
+                        <select id="type" class="type">
+                            <option value="" selected>-- 選択して下さい --</option>
+                            <option value="1">海沿い</option>
+                            <option value="2">山沿い</option>
+                            <option value="3">川沿い</option>
+                            <option value="4">平地</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px20">
+                <div class="form-group">
+                    <label for="start" class="white">スタート</label>
+                    <div class="px30">
+                        <input id="start" class="start" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goal" class="white">ゴール</label>
+                    <div class="px30">
+                        <input id="goal" class="goal" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="center">
+                <button class="square_btn" type="button">GO</button>
+            </div>
+        </div>
     </div>
-
-    <div class="form">
-        <div class="px20">
-            <div class="form-group">
-                <label for="distance" class="white">距離</label>
-                <div class="px30">
-                    <select id="distance" class="distance">
-                        <option value="" selected>-- 選択して下さい --</option>
-                        <option value="5">5km</option>
-                        <option value="10">10km</option>
-                        <option value="20">20km</option>
-                        <option value="30">30km</option>
-                        <option value="40">40km</option>
-                        <option value="50">50km</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="type" class="white">場所</label>
-                <div class="px30">
-                    <select id="type" class="type">
-                        <option value="" selected>-- 選択して下さい --</option>
-                        <option value="1">海沿い</option>
-                        <option value="2">山沿い</option>
-                        <option value="3">川沿い</option>
-                        <option value="4">平地</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="px20">
-            <div class="form-group">
-                <label for="start" class="white">スタート</label>
-                <div class="px30">
-                    <input id="start" class="start" type="text">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="goal" class="white">ゴール</label>
-                <div class="px30">
-                    <input id="goal" class="goal" type="text">
-                </div>
-            </div>
-        </div>
-
-        <div class="center">
-            <button class="square_btn" type="button">GO</button>
-        </div>
-    </div>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(function() {
-        $('.square_btn').click(function() {
-            var distance = $('.distance').val();
-            var type = $('.type').val();
-            var start = $('.start').val();
-            var goal = $('.goal').val();
-
-            if (isEmpty(distance) || isEmpty(type) || isEmpty(start) || isEmpty(goal)) {
-                alert('入力に不備があります。見直して下さい');
-                return;
-            }
-
-            localStorage.setItem("distance", distance);
-            localStorage.setItem("start", start);
-            localStorage.setItem("goal", goal);
-            localStorage.setItem("type", type);
-
-            location.href = "map.php";
-        });
-
-        function isEmpty(value) {
-            return !value || value.length === 0;
-        }
-    });
-</script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>

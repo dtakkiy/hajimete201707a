@@ -1,6 +1,6 @@
 body {
   /* 画像ファイルの指定 */
-  background-image: url(images/photo.jpg);
+  background-image: url(/images/photo.jpg);
 
   /* 画像を常に天地左右の中央に配置 */
   background-position: center center;
@@ -16,6 +16,7 @@ body {
 
   /* 背景画像が読み込まれる前に表示される背景のカラー */
   background-color: #464646;
+
 }
 
 .px20 {
@@ -27,6 +28,7 @@ body {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   margin: 10px 200px;
+  font-family: Arial, sans-serif;
 }
 
 .title {
@@ -37,6 +39,7 @@ h3.white {
   color: white;
   text-align: center;
   padding: 20px;
+  font-weight: bold;
 }
 
 label.white {
@@ -58,7 +61,7 @@ label.white {
   height: 35px;
 }
 
-/*ボタン*/
+/* GOボタン */
 .square_btn {
   display: inline-block;
   padding: 0.3em 2em;
@@ -68,6 +71,10 @@ label.white {
   border-bottom: solid 4px #627295;
   border-radius: 3px;
   font-size: 18px;
+}
+
+.square_btn:hover {
+  opacity: 0.9;
 }
 
 .square_btn:active {
@@ -85,4 +92,11 @@ label.white {
 .px30 input {
   height: 30px;
   width: 200px;
+  
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
 }
